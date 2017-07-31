@@ -94,6 +94,10 @@ p{
 	right: 30px;
 }
 
+.ulist {
+	padding-left: 15px;
+}
+
 #author-text {
 	font-size: 25px;
 }

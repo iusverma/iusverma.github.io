@@ -6,7 +6,41 @@
     </head>
     <body background="https://user-images.githubusercontent.com/7811273/28782319-5b53524c-763f-11e7-9d4e-ea37699c69c9.jpg">
           <div class="container">
-              <div>
+            <div class="other-repos">
+                <h2> Main repositories </h2>
+                <div class="other">
+                  <a href="https://github.com/iusverma/DailyPracticeJava"
+                  target="_blank">
+                  Java Practice</a>
+                </div>
+                <div class="other">
+                  <a href="https://iusverma.github.io/java8.html">
+                  Java 8 Features</a>
+                </div>
+                <div class="other">
+                  <a href="https://github.com/iusverma/fsp"
+                  target="_blank">
+                  Spring Practice</a>
+                </div>
+                <div class="other">
+                  <a href="https://github.com/iusverma/FirstRestService"
+                  target="_blank">
+                  Basic rest service</a>
+                </div>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/temp.html"> Hobbies & Interest</a>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="author-box">
+                  <img src="https://user-images.githubusercontent.com/7811273/28760827-aff3733a-75dc-11e7-90e1-79afda2c25e3.jpg"
+                    alt="Author photo"/><br>
+                    <!--<p class="author-text-id">-->
+                    ayush verma
+                    <!--</p>-->
+               </div>
+              </div>
+              <div class="main-post">
                   In this article I have tried to explain the new feature introduced in JAVA 8 and how they are making life easy
                   <ul class="ulist">
                       <li><h2>Functional Interface</h2>
@@ -16,7 +50,73 @@
                           To be added
                       </li>
                     <li><h2>Default Method</h2>
-                          To be added
+                          Starting from JAVA 8, interface can have a implementation for a method in it. This means, if class implementing this interface doesn't override the method, default method from interface will be called.<BR>
+
+                          Here is an example of default method in an interface.<BR>
+                          <code>
+                            <table>
+                              <tr><td>public interface Loggable{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Loggable.log");</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+
+                          Now this interface can be inherited in following two manners.
+                          <h3>1. Overriding the default method</h3>
+                          <code>
+                            <table>
+                              <tr><td>public class Logger1 implements Loggable{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Logger1.log");</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+                          <h3>2. Without overriding default method</h3>
+                          <code>
+                            <table>
+                              <tr><td>public class Logger2 implements Loggable{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void anotherLocalMethod(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;// TODO Something;</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+                          However this may lead to diamond problem. In it an interface is extended by two different interfaces and then a third class implements this new interface. In this case which implementation third class will use. For example here is another interface which extends Loggable interface.
+                          <code>
+                            <table>
+                              <tr><td>public class Logger3 implements Loggable{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Logger3.log");</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+                          Now, if we have another class extending and implementing Logger1 and Logger3, following will be the situation.
+                          <code>
+                            <table>
+                              <tr><td>public class Logger extends Logger1 implements Logger3{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void print(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(log()); // This will be a problem, JVM doesn't know which log (Logger1.log or <Logger3 class="log"></Logger3>) to call.</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td></td></tr>
+                              <tr><td>&nbsp;&nbsp;public static void main(String []args){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;Logger logger = new Logger();</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;logger.print();</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td></td></tr>
+                              <tr><td>&nbsp;&nbsp;// Following code need to be uncommented for class to compile</td></tr>
+                              <tr><td>&nbsp;&nbsp;/*</td></tr>
+                              <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
+                              <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Logger3.log");</td></tr>
+                              <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>&nbsp;&nbsp;*/</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+                          Fortunately JAVA compiler will not let the code compile unless local implementation for log is present. Hence uncomment the last section in above code for compilable version.
                       </li>
                     <li><h2>Effective Final</h2>
                           To be added
@@ -34,14 +134,6 @@
                  <a href="https://iusverma.github.io/index.html">go back</a>
             </div>
 
-            <div class="clearfix"></div>
-            <div class="author-box">
-                <img src="https://user-images.githubusercontent.com/7811273/28760827-aff3733a-75dc-11e7-90e1-79afda2c25e3.jpg"
-                     alt="Author photo">
-                <p class="author-text-id">
-                    ayush verma
-                </p>
-            </div>
         </div>
     </body>
 </html>

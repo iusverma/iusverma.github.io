@@ -6,32 +6,41 @@
     </head>
     <body background="https://user-images.githubusercontent.com/7811273/28782319-5b53524c-763f-11e7-9d4e-ea37699c69c9.jpg">
           <div class="container">
-            <div class="other-repos">
-                <h2> Main repositories </h2>
-                <div class="other">
-                  <a href="https://github.com/iusverma/DailyPracticeJava"
-                  target="_blank">
-                  Java Practice</a>
-                </div>
-                <div class="other">
-                  <a href="https://iusverma.github.io/java8.html">
-                  Java 8 Features</a>
-                </div>
-                <div class="other">
-                  <a href="https://github.com/iusverma/fsp"
-                  target="_blank">
-                  Spring Practice</a>
-                </div>
-                <div class="other">
-                  <a href="https://github.com/iusverma/FirstRestService"
-                  target="_blank">
-                  Basic rest service</a>
-                </div>
-                <div class="personal">
-                  <a href="https://iusverma.github.io/temp.html"> Hobbies & Interest</a>
-                </div>
 
-                <div class="clearfix"></div>
+            <!-- Following is common section for all pages, need to figure out how to place it in common place -->
+            <div class="other-repos">
+              <table class="other-table">
+                <tr>
+                  <th>
+                    <div class="table-header">
+                      <h2> Ayush's Tech Blog </h2>
+                    </div>
+                  </th>
+                </tr>
+
+                <tr><td>
+                <div class="personal">
+                  <a href="https://github.com/iusverma" target="_blank">Github Page</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java8.html">Java 8 Features</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/more-to-come.html">More to come</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/index.html">Home</a>
+                </div>
+                </td></tr>
+
+                <tr><td>
+                <!--<div class="clearfix"></div>-->
                 <div class="author-box">
                   <img src="https://user-images.githubusercontent.com/7811273/28760827-aff3733a-75dc-11e7-90e1-79afda2c25e3.jpg"
                     alt="Author photo"/><br>
@@ -39,8 +48,14 @@
                     ayush verma
                     <!--</p>-->
                </div>
+               </td></tr>
+              </table>
               </div>
+              <!-- Above is common section for all pages, need to figure out how to place it in common place -->
+
+              <!-- Following is page specfic section -->
               <div class="main-post">
+                  <h1> JAVA 8 new features </h1>
                   In this article I have tried to explain the new feature introduced in JAVA 8 and how they are making life easy
                   <ul class="ulist">
                       <li><h2>Functional Interface</h2>
@@ -54,7 +69,7 @@
 
                           Here is an example of default method in an interface.<BR>
                           <code>
-                            <table>
+                            <table class="code-table">
                               <tr><td>public interface Loggable{</td></tr>
                               <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
                               <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Loggable.log");</td></tr>
@@ -66,7 +81,7 @@
                           Now this interface can be inherited in following two manners.
                           <h3>1. Overriding the default method</h3>
                           <code>
-                            <table>
+                            <table class="code-table">
                               <tr><td>public class Logger1 implements Loggable{</td></tr>
                               <tr><td>&nbsp;&nbsp;public void log(){</td></tr>
                               <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Logger1.log");</td></tr>
@@ -76,14 +91,14 @@
                           </code>
                           <h3>2. Without overriding default method</h3>
                           <code>
-                            <table>
+                            <table class="code-table">
                               <tr><td>public class Logger2 implements Loggable{</td></tr>
                               <tr><td>&nbsp;&nbsp;public void anotherLocalMethod(){</td></tr>
                               <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;// TODO Something;</td></tr>
                               <tr><td>&nbsp;&nbsp;}</td></tr>
                               <tr><td>}</td></tr>
                             </table>
-                          </code>
+                          </code class="code-table">
                           However this may lead to diamond problem. In it an interface is extended by two different interfaces and then a third class implements this new interface. In this case which implementation third class will use. For example here is another interface which extends Loggable interface.
                           <code>
                             <table>
@@ -96,7 +111,7 @@
                           </code>
                           Now, if we have another class extending and implementing Logger1 and Logger3, following will be the situation.
                           <code>
-                            <table>
+                            <table class="code-table">
                               <tr><td>public class Logger extends Logger1 implements Logger3{</td></tr>
                               <tr><td>&nbsp;&nbsp;public void print(){</td></tr>
                               <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(log()); // This will be a problem, JVM doesn't know which log (Logger1.log or <Logger3 class="log"></Logger3>) to call.</td></tr>
@@ -129,10 +144,6 @@
                       </li>
                 </ul>
               </div>
-  
-              <div class="back">
-                 <a href="https://iusverma.github.io/index.html">go back</a>
-            </div>
 
         </div>
     </body>

@@ -1,0 +1,141 @@
+<!DOCTYPE=html>
+<html>
+    <head>
+        <title>Java 8 new feature</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+    <body background="https://user-images.githubusercontent.com/7811273/28782319-5b53524c-763f-11e7-9d4e-ea37699c69c9.jpg">
+          <div class="container">
+
+            <!-- Following is common section for all pages, need to figure out how to place it in common place -->
+            <div class="other-repos">
+              <table class="other-table">
+                <tr>
+                  <th>
+                    <div class="table-header">
+                      <h2> Ayush's Tech Blog </h2>
+                    </div>
+                  </th>
+                </tr>
+
+                <tr><td>
+                <div class="personal">
+                  <a href="https://github.com/iusverma" target="_blank">Github Page</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java8.html">Java 8 Features</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/hibernate/hibernate.html">Hibernate Quick Points</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/springs/springs.html">Spring Quick Reference</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/index.html">Home</a>
+                </div>
+                </td></tr>
+
+                <tr><td>
+                <!--<div class="clearfix"></div>-->
+                <div class="author-box">
+                  <img src="https://user-images.githubusercontent.com/7811273/28760827-aff3733a-75dc-11e7-90e1-79afda2c25e3.jpg"
+                    alt="Author photo"/><br>
+                    <!--<p class="author-text-id">-->
+                    ayush verma
+                    <!--</p>-->
+               </div>
+               </td></tr>
+              </table>
+              </div>
+              <!-- Above is common section for all pages, need to figure out how to place it in common place -->
+
+              <!-- Following is page specfic section -->
+              <div class="main-post">
+                  <h1> Some quick points in Hibernate to revise </h1>
+                  In this article I have tried to explain the new feature introduced in JAVA 8 and how they are making life easy
+                  <ul class="ulist">
+                      <li><h2>What is Hibernate</h2>
+                          Problem statment, steps, storing premittives, objects, collections
+                      </li>
+                    <li><h2>Mappings</h2>
+                        
+
+                    </li>
+                    <li><h2>Inheritance</h2>
+                          Starting from JAVA 8, interface can have a implementation for a method in it. This means, if class implementing this interface doesn't override the method, default method from interface will be called.<BR>
+
+                          <h3>Join strategies</h3>
+                          Hibernate provides 3 basic strategies for storing table with inheritance. Let's see this with example. For exampl, we have following classes.<BR>
+                          <code>
+                            <table class="code-table">
+                              <tr><td>public class Vehicle{</td></tr>
+                              <tr><td>&nbsp;&nbsp;private int id;</td></tr>
+                              <tr><td>&nbsp;&nbsp;private String name;</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+
+                          And following are two classes inherited from Vechicle class
+                          <h3>1. Overriding the default method</h3>
+                          <code>
+                            <table class="code-table">
+                              <tr><td>public class TwoWheeler extends Vehicle {</td></tr>
+                              <tr><td>&nbsp;&nbsp;private int id;</td></tr>
+                              <tr><td>&nbsp;&nbsp;private String steeringHandle;</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+                          And
+                          <code>
+                            <table class="code-table">
+                              <tr><td>public class FourWheeler extends Vehicle{</td></tr>
+                              <tr><td>&nbsp;&nbsp;private String steeringWheel;</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code class="code-table">
+                          Now here are the three styles of table based on the table strategy chosen.
+                          <li>
+                            <ul><h3>Single Table</h3>
+                              In this style, there will always a single table for all hierarchy and all properties from super to child class will form a column in table. There will be a Descriminator Type (dtype) column which will contain the class name to identiy records seperately. 
+                              For the classes above here is the table structure
+                              <img src="https://iusverma.github.io/images/single-table-strategy.png"
+                                 alt="Single Table Strategy Table structure for classes defined above"/>
+                            </ul>
+                            <ul><h3>Table Per Class</h3>
+                              In this style, there will one single table for each concrete class in inheritance hierarchy and each table will have correspodning class properties and properties from super class. 
+                              For the classes above here is the table structure
+                              <img src="https://iusverma.github.io/images/table-per-class-strategy.png"
+                                 alt="Table Per Class Strategy Table structure for classes defined above"/>
+                            </ul>
+                            <ul><h3>Joined</h3>
+                              In this style, there will one single table for each concrete class in inheritance hierarchy. However properties for the super class will only be present in corresponding table. For child class tables, only those column will come which are defined as properties in child class. Also there will be a id column from the super class table. 
+                              For the classes above here is the table structure
+                              <img src="https://iusverma.github.io/images/joined-table-strategy.png"
+                                 alt="Joined Strategy Table structure for classes defined above"/>
+                            </ul>
+                          </li>
+                      </li>
+                    <li><h2>Effective Final</h2>
+                          To be added
+                      </li>
+                    <li><h2>Stream API</h2>
+                          To be added
+                      </li>
+                    <li><h2>Method Reference</h2>
+                          To be added
+                      </li>
+                </ul>
+              </div>
+
+        </div>
+    </body>
+</html>

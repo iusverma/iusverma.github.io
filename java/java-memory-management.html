@@ -1,0 +1,220 @@
+<!DOCTYPE=html>
+<html>
+    <head>
+        <title>Memory Management in Java</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+    </head>
+    <body background="https://user-images.githubusercontent.com/7811273/28782319-5b53524c-763f-11e7-9d4e-ea37699c69c9.jpg">
+          <div class="container">
+
+            <!-- Following is common section for all pages, need to figure out how to place it in common place -->
+            <div class="other-repos">
+              <table class="other-table">
+                <tr>
+                  <th>
+                    <div class="table-header">
+                      <h2> Ayush's Tech Blog </h2>
+                    </div>
+                  </th>
+                </tr>
+
+                <tr><td>
+                <div class="personal">
+                  <a href="https://github.com/iusverma" target="_blank">Github Page</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java8.html">Java 8 Features</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java/java-memory-management.html">Memory Management in Java</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                  <div class="personal">
+                    <a href="https://iusverma.github.io/hibernate/hibernate.html">Hibernate Quick Reference</a>
+                  </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/springs/springs.html">Spring Quick Reference</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/index.html">Home</a>
+                </div>
+                </td></tr>
+
+                <tr><td>
+                <!--<div class="clearfix"></div>-->
+                <div class="author-box">
+                  <img src="https://iusverma.github.io/images/author.jpg"
+                    alt="Author photo"/><br>
+                    <!--<p class="author-text-id">-->
+                    ayush verma
+                    <!--</p>-->
+               </div>
+               </td></tr>
+              </table>
+              </div>
+              <!-- Above is common section for all pages, need to figure out how to place it in common place -->
+
+              <!-- Following is page specfic section -->
+              <div class="main-post">
+                  <h1> Memory Management in JAVA </h1>
+                  <ul class="ulist">
+                    <li><h2>Memory Type</h2>
+                        Java has two main memory areas.
+                        <ul>
+                            <li><h3>Stack</h3>
+                                References for objects in heap and primitive variables are stored in stack. <br>
+                                In multithread application, each thread has it's own stack i.e. stack is seperate for each thread in an multithreaded enviroment.
+                            </li>
+                            <li><h3>Heap</h3>
+                                All objects reside here
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h2>Reference Type</h2>
+                        <ul>
+                            <li><h3>Strong Reference</h3>
+                                If an object from heap, is directly or strongly connected to reference in stack, it is called a strong reference. <br>
+                                String references are not eligible for garbage collection.<br>
+                                <b>Example</b>
+                                <code>
+                                    <table class="code-table">
+                                      <tr><td>StringBuilder builder = new StringBuilder();</td></tr>
+                                    </table>
+                                </code>           
+                                Here builder is a string reference for StringBuilder object.
+                            </li>
+                            <li><h3>Weak Reference</h3>
+                                Created using 'WeakReference' class, these reference will be destroyed with next garbage collection run.<br>
+                                These are used mainly in cache application, where we don't want to store data for long time as we don't know whether data will be used or not and WeakHashMap.
+                                <code>
+                                    <table class="code-table">
+                                      <tr><td>WeakReference&lt;String&gt; bRef = new WeakReference&lt;String&gt;("Temp Cache String");</td></tr>
+                                    </table>
+                                </code> 
+                            </li>
+                            <li><h3>Soft Reference</h3>
+                                Created using 'SoftReference' class, these reference are used for memory critical aplications. GC will only clear these references when applicaion is running low in memory or before throwing 'OutOfMemoryError'<br>
+                                If there is not critical need for memory, these references will never be touched.
+                                <code>
+                                    <table class="code-table">
+                                      <tr><td>SoftReference&lt;String&gt; bRef = new SoftReference&lt;String&gt;("Memory Critical Data");</td></tr>
+                                    </table>
+                                </code> 
+                            </li>
+                            <li><h3>Phantom Reference</h3>
+                                Used for post-mortem of application.<br>
+                                TBD: Need clearer definition here.
+                            </li>
+                        </ul>
+                    </li>
+                    <li><h2>Garbage Collection Types</h2>
+                          JVM Runs following types of garbage collection and differnt memory spaces
+                          <ul>
+                            <li><h3>Eden</h3>
+                                This is primary memory space and all object first go here. This is small in size and gets overrun fast. Once it is full, JVM runs garbage collection. All object those survice gc here move to survivor space.
+                            </li>
+                            <li><h3>Survivor 1 (S0)</h3>
+                                This is first of two survivor space, an object which survives garbage collection in Eden reaches here. Once garbage collection runs in this space, all surviving object moves to next survivor space.
+                            </li>
+                              <li><h3>Survivor 2 (S1)</h3>
+                                This is second of two survivor space, an object which survives garbage collection in Eden reaches here. Once garbage collection runs in this space, all surviving object moves to next survivor space.<br>
+                                Object alternate between S0 and S1 for a fix number of gc runs (X) in eden space, this X is typically 8 runs. Once an object survives X gc cycles, it moves to OldGen space 
+                            </li>
+                            <li><h3>Old Gen</h3>
+                                This is the space where only those object will reside, who have survived resonable gc cycles.
+                            </li>
+                            <li><h3>Metaspace or PermGen</h3>
+                                This space contains class metadata.<br>
+                                Prior to JAVA 7 (in JAVA 6) string pool also use to reside in PermGen space. This sometimes resulted as application crash when number of string in an application become too high.
+                                <b>Question:</b> Where stringpool reside in JAVA 8. <br>
+                                <b>Answer:</b> TBD <br>
+                                <b>Question:</b> How to add computed string in stringpool<br>
+                                <b>Answer:</b> use intern() e.g. new String("some string").intern();<br>
+                            </li>
+                        </ul>
+                        <b>Note:</b> Even though process of cleaning unsused reference is called garbage collection, JVM never collects garbage. When garbage collection is run, JVM marks all alive and refereceable object and at the end deletes all which are left. This is done to for performance improvement.
+                      </li>
+                    <li><h2>Collector Types</h2>
+                          <ul>
+                            <li><h3>Serial GC</h3>
+                                Single thread garbage collector for small application.
+                                <b>Example</b>
+                                <code>
+                                    <table class="code-table">
+                                      <tr><td>-XX:+UseSerialGC</td></tr>
+                                    </table>
+                                </code>
+                            </li>
+                            <li><h3>Paraller GC</h3>
+                                Single thread garbage collector for small application.
+                                <b>Example</b>
+                                <code>
+                                    <table class="code-table">
+                                      <tr><td>-XX:+UseParallelGC</td></tr>
+                                    </table>
+                                </code>
+                            </li>
+                            <li><h3>Mostly Concurrent GC</h3>
+                                This run concurrently. However this is not 100% concurrent, hence the name "mostly".<br>
+                                It pauses threads for some moment to achieve best performance.<br>
+                                It has two sub types.
+                                <ul>
+                                    <li><h3>Garbage First</h3>
+                                        Pauses thread for reasonable amount of time and clean garbage.
+                                        <b>Example</b>
+                                        <code>
+                                            <table class="code-table">
+                                              <tr><td>-XX:+UseG1GC</td></tr>
+                                            </table>
+                                        </code>
+                                    </li>
+                                    <li><h3>Concurrent Mark Sweep</h3>
+                                        Here pauses time is minimum. However starting from JAVA 9 this is deprecated.
+                                        <b>Example</b>
+                                        <code>
+                                            <table class="code-table">
+                                              <tr><td>-XX:+UseConMarkSweepGC</td></tr>
+                                            </table>
+                                        </code>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                      <li><h2>Effectivlly using memory and garbage collection</h2>
+                          <ul>
+                            <li>Limit scope of variables.</li>
+                            <li>When ever possible refer object to null, this will enable gc to delete such object faster.</li>
+                            <li>Avoid finalizers, prefer PhantomReferences.</li>
+                            <li>Do not use strong references where weak/soft references apply.</li>
+                            <li>If there is an out of memory issue use following for seeing heap dump.
+                                <code>
+                                    <table class="code-table">
+                                        <tr><td>-XX:+HeapDumpOutOfMemory</td></tr>
+                                    </table>
+                                </code>
+                            </li>
+                            <li>Use following for collection output of each garbage collection run.
+                                <code>
+                                    <table class="code-table">
+                                        <tr><td>-verbose:gc</td></tr>
+                                    </table>
+                                </code>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+              </div>
+
+        </div>
+    </body>
+</html>

@@ -66,13 +66,36 @@
               <!-- Following is page specfic section -->
               <div class="main-post">
                   <h1> JAVA 8 new features </h1>
-                  In this article I have tried to explain the new feature introduced in JAVA 8 and how they are making life easy
+                  In this article I have tried to explain the new feature introduced in JAVA 8 and how they are making life easy.
                   <ul class="ulist">
                       <li><h2>Functional Interface</h2>
-                          To be added
+                          A functional interface in JAVA is an Interface which has one and only one abstract method in it. This single interface will be used in defining lambda expressions.
+                          <code>
+                            <table class="code-table">
+                              <tr><td>interface MyNumber{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public double findProduct(int [] a);</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
                       </li>
                     <li><h2>Lambda Expression</h2>
-                          To be added
+                          A lambda expression is an anonymous (without name) method. This expression can/will the method defined by any funtional interface and provide a body for it.
+						  For example, for the functional interface defined in point above here can be two lambda expressions.
+                          <code>
+                            <table class="code-table">
+                              <tr><td>class LambdaDemo{</td></tr>
+                              <tr><td>&nbsp;&nbsp;public static void main(String [] args){</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;MyNumber myNum1 = (n) -> {return n[0];};</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;int [] a = {3,4,5,6};</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;system.out.println(myNum1.findProduct(a));</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;MyNumber myNum2 = (n) -> {return 10;};</td></tr>
+							  <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(myNum2.findProduct(a));</td></tr>
+							  <tr><td>&nbsp;&nbsp;}</td></tr>
+                              <tr><td>}</td></tr>
+                            </table>
+                          </code>
+						  In the above example, funtional interface method findProduct is implemented in two lambda expressions. (1) returns the first element (3) while (2) returns 10. So you can choose which ever implementation you want for your interface.
                       </li>
                     <li><h2>Default Method</h2>
                           Starting from JAVA 8, interface can have a implementation for a method in it. This means, if class implementing this interface doesn't override the method, default method from interface will be called.<BR>

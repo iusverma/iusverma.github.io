@@ -1,0 +1,251 @@
+<!DOCTYPE=html>
+<html>
+    <head>
+        <title>Git commands & shortcuts</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body background="https://user-images.githubusercontent.com/7811273/28782319-5b53524c-763f-11e7-9d4e-ea37699c69c9.jpg">
+          <div class="container">
+
+            <!-- Following is common section for all pages, need to figure out how to place it in common place -->
+            <div class="other-repos">
+              <table class="other-table">
+                <tr>
+                  <th>
+                    <div class="table-header">
+                      <h2> Ayush's Tech Blog </h2>
+                    </div>
+                  </th>
+                </tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://github.com/iusverma" target="_blank">Github Page</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java8.html">Java 8 Features</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/java/java-memory-management.html">Memory Management in Java</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                  <div class="personal">
+                    <a href="https://iusverma.github.io/hibernate/hibernate.html">Hibernate Quick Reference</a>
+                  </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/springs/springs.html">Spring Quick Reference</a>
+                </div>
+                </td></tr>
+                <tr><td>
+                <div class="personal">
+                  <a href="https://iusverma.github.io/index.html">Home</a>
+                </div>
+                </td></tr>
+
+                <tr><td>
+                <!--<div class="clearfix"></div>-->
+                <div class="author-box">
+                  <img src="https://iusverma.github.io/images/author.jpg"
+                    alt="Author photo"/><br>
+                    <!--<p class="author-text-id">-->
+                    ayush verma
+                    <!--</p>-->
+               </div>
+               </td></tr>
+              </table>
+              </div>
+              <!-- Above is common section for all pages, need to figure out how to place it in common place -->
+
+              <!-- Following is page specfic section -->
+              <div class="main-post">
+                  <h1> Git commands & shortcuts </h1>
+                  I have listed down all the git commands which I have worked on so far and also some of the trick commands which I have used in during my day to day job
+                  <ul class="ulist">
+                      <li><h2>Git command general</h2>
+                          Here are all the git commands I have used so far
+                          <code>
+                            <table class="code-table">
+                              <tr><td>1. Cloning using SSH</td></tr>
+                                <tr><td>git clone git@github.com:iusverma/iusverma.github.io.git</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>2. Cloning using HTTPS</td></tr>
+                                <tr><td>git clone https://github.com/iusverma/AutomatedParkingSystem.git</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>Note: When you clone a repository, it creates a default reference "origin" in ur local. This origin will always point to the repo you first cloned.
+                                <tr><td></td></tr>
+                                <tr><td>3. Checking the local repository</td></tr>
+                                <tr><td>git remote -vv</td></tr>
+                                <tr><td>Output Sample:</td></tr>
+                                <tr><td>origin	git@github.com:iusverma/AutomatedParkingSystem.git (fetch)</td></tr>
+                                <tr><td>origin	git@github.com:iusverma/AutomatedParkingSystem.git (push)</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>4. Setting multiple repository inside same structure</td></tr>
+                                <tr><td>git remote add new_repo_name remote_repo_url</td></tr>
+                                <tr><td>E.g. git remote add upstream git@github.com:iusverma/iusverma.github.io.git</td></tr>
+                                <tr><td>Note: Adding upstream will create an additional link with name "upstream", which will link to this new repo.</td></tr>
+                                <tr><td>Output sample for git remote -vv after above command</td></tr>
+                                <tr><td>origin	git@github.com:iusverma/AutomatedParkingSystem.git (fetch)</td></tr>
+                                <tr><td>origin	git@github.com:iusverma/AutomatedParkingSystem.git (push)</td></tr>
+                                <tr><td>upstream	git@github.com:iusverma/AutomatedParkingSystem.git (fetch)</td></tr>
+                                <tr><td>upstream	git@github.com:iusverma/AutomatedParkingSystem.git (push)</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>5. Checking the local branch </td></tr>
+                                <tr><td>git branch </td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>6. Checking all the branches local & remote </td></tr>
+                                <tr><td>git branch -a</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>7. Checking which branch current branch is tracking to</td></tr>
+                                <tr><td>git branch -vv
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>8. Create new branch locally</td></tr>
+                                <tr><td>git checkout -b branch_name</td></tr>
+                                <tr><td>E.g. git checkout -b release-1.0</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>9. Pushing and tracking locally created branch </td></tr>
+                                <tr><td>git push origin branch_name</td></tr>
+                                <tr><td>git branch --set-upstream-to origin/branch_name</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>10. Create new branch from remote </td></tr>
+                                <tr><td>git checkout -b branch_name origin/branch_name</td></tr>
+                                <tr><td>E.g. git checkout -b develop origin/develop</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>11. Alternate/switch branch</td></tr>
+                                <tr><td>git checkout branch name</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>12. Pulling and pushing code from remote</td></tr>
+                                <tr><td>12.1.</td></tr>
+                                <tr><td>git pull</td></tr>
+                                <tr><td>git push</td></tr>
+                                <tr><td> - this will pull/push work from/to default tracking branch</td></tr>
+                                <tr><td>12.2. (recommended by me)</td></tr>
+                                <tr><td>git fetch origin - fetches all changes accross repository </td></tr>
+                                <tr><td>git pull --rebase - mergse all changes from remote and put local changes on top</td></tr>
+                                <tr><td>git push origin branch_name - push changes to specifc branch</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>13. Comming a code</td></tr>
+                                <tr><td>git add file name</td></tr>
+                                <tr><td>git commit -m "commit message"</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>14. Reverting a commit </td></tr>
+                                <tr><td>git reset --soft HEAD^</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>15. Changing commit message for a commit already pushed</td></tr>
+                                <tr><td>git rebase -i HEAD~N</td></tr>
+                                <tr><td>- N is the one commit before the commit which you want to change.</td></tr>
+                                <tr><td>- Once the editor opens, edit the file and put e/r infront of the commit you want to change.</td></tr>
+                                <tr><td>- save file and exit</td></tr>
+                                <tr><td>git push -f origin branch name</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>16. Checking current state</td></tr>
+                                <tr><td>git status -uno</td></tr>
+                                <tr><td>- show only the tracked files</td></tr>
+                                <tr><td>- do not show new files</td></tr>
+                                <tr><td>git status</td></tr>
+                                <tr><td>- shows all files</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>17. Merging multiple commits into one</td></tr>
+                                <tr><td>git rebase -i HEAD~N</td></tr>
+                                <tr><td>- N number of last commits you want to merge + 1</td></tr>
+                                <tr><td>- Once the editor is open, edit the file, keep first one as P/Pick, mark all other as "S"</td></tr>
+                                <tr><td>- save file and exit</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>18. Stashing or stacking local changes</td></tr>
+                                <tr><td>git stash save "stash message"</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>19. Check the stash bucket</td></tr>
+                                <tr><td>git stash list</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>20. Applying stashed changes</td></tr>
+                                <tr><td>git stash apply stasg@{N}</td></tr>
+                                <tr><td>- N being stash number you want to apply</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>21. Picking some one elses commit</td></tr>
+                                <tr><td>git cherry-pick commit-id</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>22. Picking some one elses commit without commiting it</td></tr>
+                                <tr><td>git cherry-pick -n commit-id</td></tr>
+                                <tr/><tr/><tr/><tr/>
+                                <tr><td>23. Creating a local repo and pushing to github</td></tr>
+                                <tr><td>1. git init</td></tr>
+                                <tr><td>2. git add remote </td></tr>
+                                <tr><td>3. git push origin</td></tr>
+                            </table>
+                          </code>
+                      </li>
+                      <li><h2>Git remote & origin</h2>
+                          Here I will describe above command in more detail.
+                          When you do a git clone you create a local version of the remote git repo. This mean now you have all code in your local machine other than the remote git url. By default the default branch is created on local and you can verify your remote as following
+                          <code>
+                            <table class="code-table" border="3">
+                              <th>
+                                <td>Serial Number</td>
+                                <td>Command</td>
+                                <td>Details</td>
+                                <td>Sample Ouput</td>
+                              </th>
+                              <tr>
+                                <td/>
+                                <td>1</td>
+                                <td>git remote -vv</td>
+                                <td>This command is used to verify all remote repos linked to current clone.</td>
+                                <td>
+                                origin	git@github.com:iusverma/iusverma.github.io.git (fetch)<br>   
+                                origin	git@github.com:iusverma/iusverma.github.io.git (push)
+                                </td>
+                              </tr>
+                              <tr>
+                                <td/>
+                                <td>2</td>
+                                <td>git branch -vv</td>
+                                <td>This command is used to check all local branches and which branch in remote they are linked to.</td>
+                                <td>
+                                master 5ad75f4 [origin/master] Java 8 additions
+                                </td>
+                              </tr>
+                              <tr>
+                                <td/>
+                                <td>3</td>
+                                <td>
+                                    git checkout -b branch_name origin/branch_name
+                                </td>
+                                <td>This command will create a local branch from existing branch and set to track it.</td>
+                                <td>
+                                    Controls goes to new branch directly
+                                </td>
+                              </tr>
+                              <tr>
+                                <td/>
+                                <td>3</td>
+                                <td>
+                                    git checkout -b new_branch_name origin/existing_branch_name
+                                    git push orrigin new_branch_name
+                                    git branch --set-upstream-to origin/new_branch_name
+                                </td>
+                                <td>This command will creates <br> 
+                                    1. first a local branch from existing branch and set to track it.<br>
+                                    2. then pushes it to remote and creates new branch in remote <br> 
+                                    3. finally in set the local branch to trach to remote branch <br>
+                                  </td>
+                                <td>
+                                    Controls goes to new branch directly
+                                </td>
+                              </tr>
+                            </table>
+                          </code>
+                          Above code sample means your local code is reflection of origin, which is pointing to git@github.com:iusverma/iusverma.github.io.git.
+                          <br>
+                          Other than remote you can use following command to see which branch are you on
+                      </li>
+                </ul>
+              </div>
+
+        </div>
+    </body>
+</html>
